@@ -1,0 +1,12 @@
+name: 'WordPress to Drupal Migrate'
+type: module
+description: 'WordPress to Drupal Migration Example Code'
+core_version_requirement: ^9 || ^10
+package: 'Custom'
+dependencies:
+  - drupal:migrate_plus
+  - drupal:migrate_tools
+  - drupal:migrate_file
+  - drupal:migrate
+  - drupal:node
+  - drupal:media

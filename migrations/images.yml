@@ -1,0 +1,27 @@
+langcode: en
+status: true
+id: images
+label: Images
+source:
+  plugin: wp_to_drupal_images
+  key: wp_migration
+process:
+  uid:
+    plugin: default_value
+    default_value: 100
+  name: post_title
+  field_caption/value: post_excerpt
+  field_caption/format:
+    plugin: default_value
+    default_value: limited_html
+  field_media_image:
+    plugin: image_import
+    destination: file_destination_path
+    source: url
+    alt: alt
+    title: post_title
+    reuse: true
+destination:
+  plugin: 'entity:media'
+  default_bundle: image
+migration_dependencies: {}

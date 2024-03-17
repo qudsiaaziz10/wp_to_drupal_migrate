@@ -1,0 +1,21 @@
+langcode: en
+status: true
+id: videos
+label: Videos
+source:
+  plugin: wp_to_drupal_videos
+  key: wp_migration
+process:
+  uid:
+    plugin: default_value
+    default_value: 100
+  name: post_title
+  field_media_video_file:
+    plugin: file_import
+    destination: file_destination_path
+    source: url
+    reuse: true
+destination:
+  plugin: 'entity:media'
+  default_bundle: video
+migration_dependencies: {}

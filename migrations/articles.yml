@@ -1,0 +1,43 @@
+langcode: en
+status: true
+id: articles
+label: Articles
+source:
+  plugin: wp_to_drupal_articles
+  key: wp_migration
+process:
+  title: post_title
+  field_article_type: article_type
+  field_topic: topic
+  field_body_paragraphs:
+    -
+      plugin: migration_lookup
+      source: body_content
+      migration:
+        - body
+      no_stub: true
+    -
+      plugin: body_paragraphs_process
+    -
+      plugin: sub_process
+      process:
+        target_id: '0'
+        target_revision_id: '1'
+  field_summary: summary
+  field_image: image
+  field_publish_date: publish_date
+  field_author_name: author_name
+  field_author_title: author_title
+  uid:
+    plugin: default_value
+    default_value: 100
+  status: status
+destination:
+  plugin: 'entity:node'
+  default_bundle: article
+migration_dependencies:
+  required:
+    - body
+    - images
+    - documents
+  optional: []

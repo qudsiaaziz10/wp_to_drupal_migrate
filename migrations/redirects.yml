@@ -1,0 +1,29 @@
+langcode: en
+status: true
+id: redirects
+label: Redirects
+source:
+  plugin: wp_to_drupal_redirects
+  key: wp_migration
+  node_types:
+    - article
+    - product
+process:
+  redirect_source: source
+  redirect_redirect: destination
+  uid:
+    plugin: default_value
+    default_value: 100
+  language:
+    plugin: default_value
+    default_value: und
+  status_code:
+    plugin: default_value
+    default_value: 301
+destination:
+  plugin: 'entity:redirect'
+migration_dependencies:
+  required:
+    - article
+    - product
+  optional: []
