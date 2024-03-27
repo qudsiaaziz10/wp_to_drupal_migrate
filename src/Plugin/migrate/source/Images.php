@@ -20,7 +20,7 @@ class Images extends WpToDrupalMigrateSourceBase {
    */
   public function query() {
     // Will import all of the images for all of the posts since a certain date.
-    $post_date = parent::getEarliestPostDate()''
+    $post_date = parent::getEarliestPostDate();
     $query = $this->select('wp_posts', 'images');
     $query->join('wp_posts', 'posts', 'posts.post_date >= \'{$post_date}\'');
     $query->join('wp_postmeta', 'meta', 'meta.post_id = posts.ID AND meta.meta_key = \'_thumbnail_id\' AND meta.meta_value = images.ID');
